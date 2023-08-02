@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,16 +9,60 @@
    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
    crossorigin=""/>
 
-    <title>Document</title>
+<!--- Estilo --->
+    <link rel="stylesheet" href="/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <title>Maps</title>
 </head>
 <body>
     
-    <div id="map" style="height: 600px;"></div>
+    <main class="main-container">
+        <div id="map"></div>
+        
+        <div class="form-container">
+            <section class="form">
+                <div>
+                    <label>Nombre</label>
+                    <input id="nombre" type="text">
+                </div>
+                <div>
+                    <label>Dirección</label>
+                    <input id="direccion" type="text">
+                </div>
+                <div>
+                    <label>teléfono</label><input id="telefono" type="number">
+
+                </div>
+                <div>
+                    <label>Categoría</label>
+                    <select name="" id="categoria">
+                        <option value="Comercial">Comercial</option>
+                        <option value="Residencial">Residencial</option>
+                        <option value="Mixta">Mixta</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Coordenadas (x,y)</label>
+                    <input id="coordenadas" type="text">
+                </div>
+                <button id="btn-agregar">Agregar</button>
+
+                <div>
+                    <h2>Puntos</h2>
+                </div>
+            </section>
+        </div>
+       
+        
+    </main>
+
 
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
    crossorigin=""></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
    <script src="/main.js"></script>
 </body>
 </html>
