@@ -1,5 +1,4 @@
 const map = L.map('map');//indico en donde se va a mostrar el mapa (en este caso en el div map)
-
 const mapGlobal = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19
 }).addTo(map);// establesco el mapa a utilizar
@@ -47,12 +46,32 @@ agregar.addEventListener('click', function(event) {
         lng: arr[1]
     }//la libreria para marcar una posicion busca en un objeto las keys 'lat' y 'lng'
     let marker = L.marker(posicion).addTo(map);
-    marker.bindPopup(`<b>Nombre: ${nombre}</b><br><b>Dirección: ${direccion}</b><br><b>Teléfono: ${telefono}</b><br><b>Categoria: ${categoria}</b><br><b>(x , Y): ${coordenadas}</b><br>`)
+    marker.bindPopup(`<b>Nombre: ${nombre}</b><br><b>Dirección: ${direccion}</b><br><b>Teléfono: ${telefono}</b><br><b>Categoria: ${categoria}</b><br><b>(x , Y): ${coordenadas}</b><br><button id="btn-eliminar" data-id="${coordenadas}" onclick="eliminar()">Eliminar</button>`)
 
-    map.flyTo(posicion, 18)
+    map.flyTo(posicion, 18)//te traslada al lugar del marcador agregado
 
-    console.log(posicion)
 })
+
+function eliminar() {
+    let btnEliminar = document.getElementById('btn-eliminar')
+    let coordenadas = btnEliminar.dataset.id
+    let arr = coordenadas.split(",")
+    let latitud = parseFloat(arr[0]);//paso las cordenadas a float 
+    let longitud = parseFloat(arr[1]);
+
+    map.eachLayer(function (layer) {
+        if (layer instanceof L.Marker) {
+            let marcador = layer;
+            let marcadorLatitud = marcador.getLatLng().lat;//getLatLng()recibe cordenadas en float y compara con otro numero float
+            let marcadorLongitud = marcador.getLatLng().lng;
+
+            if (marcadorLatitud === latitud && marcadorLongitud === longitud) {
+                // Remover el marcador del mapa
+                map.removeLayer(marcador);
+            }
+        }
+    });
+}
 
 map.doubleClickZoom.disable()
 
