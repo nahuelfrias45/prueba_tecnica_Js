@@ -1,8 +1,22 @@
+
+const xhttp = new XMLHttpRequest();
+
+xhttp.open('GET', 'coordenadas.json', true);
+
+xhttp.send();
+
+xhttp.onreadystatechange = function(){
+    if(this.readyState == 4 && this.status == 200) {
+        let datos = JSON.parse(this.responseText)
+        console.log(datos)
+    }
+}
+
+const marcadorDatos = [];
 const map = L.map('map');//indico en donde se va a mostrar el mapa (en este caso en el div map)
 const mapGlobal = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19
 }).addTo(map);// establesco el mapa a utilizar
-
 const agregar = document.getElementById('btn-agregar');
 
 // recupero una cordenada cerca del usuario y la uso como posición default
@@ -50,6 +64,8 @@ agregar.addEventListener('click', function(event) {
 
     map.flyTo(posicion, 18)//te traslada al lugar del marcador agregado
 
+    marcadorDatos.push({nombre: nombre, direccion: direccion, telefono: telefono, categoria: categoria, coordenadas: coordenadas})
+    console.log(marcadorDatos)
 })
 
 function eliminar() {
@@ -80,6 +96,3 @@ map.on('dblclick', e => {
     L.marker(latLng).addTo(map)
     console.log(latLng)
 })
-
-
-
