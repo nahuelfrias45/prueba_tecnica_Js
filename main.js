@@ -1,14 +1,21 @@
-
 const xhttp = new XMLHttpRequest();
-
 xhttp.open('GET', 'coordenadas.json', true);
-
 xhttp.send();
-
 xhttp.onreadystatechange = function(){
     if(this.readyState == 4 && this.status == 200) {
         let datos = JSON.parse(this.responseText)
-        console.log(datos)
+        datos.forEach(coords => {
+            let data = coords.coordenadas
+            let arr = data.split(",")
+            let posicion = {
+                lat: arr[0],
+                lng: arr[1]
+            }
+            let marker = L.marker(posicion).addTo(map);
+            marker.bindPopup(`<b>Nombre: ${coords.nombre}</b><br><b>Dirección: ${coords.direccion}</b><br><b>Teléfono: ${coords.telefono}</b><br><b>Categoria: ${coords.categoria}</b><br><b>(x , Y): ${coords.coordenadas}</b><br><button id="btn-eliminar" data-id="${coords.coordenadas}" onclick="eliminar()">Eliminar</button>`)
+            console.log(posicion)
+        });
+        
     }
 }
 

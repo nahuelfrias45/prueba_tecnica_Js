@@ -1,10 +1,16 @@
 [
     {
-        "titulo": "empire burlesque",
-        "artista": "bob dylan"
+        "nombre": "Casa Rosada",
+        "direccion": "Balcarce 78, C1064 CABA",
+        "telefono": "1123745129",
+        "categoria": "residencia",
+        "coordenadas": "-34.60787896399074, -58.37026707535819"
     },
     {
-        "titulo": "hide your heart",
-        "artista": "bonnie tyler"
+        "nombre": "Luna Park",
+        "direccion": "Av. Eduardo Madero 470, C1106 CABA",
+        "telefono": "1123745129",
+        "categoria": "residencia",
+        "coordenadas": "-34.60180601999273, -58.36887488885008"
     }
 ]
