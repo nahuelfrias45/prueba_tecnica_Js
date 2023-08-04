@@ -101,7 +101,6 @@ function mover(){
 function eliminar() {
     let btnEliminar = document.getElementById('btn-eliminar')
     let divId = document.getElementById(btnEliminar.dataset.name)
-    let dataName = btnEliminar.dataset.name
     let coordenadas = btnEliminar.dataset.id
     let arr = coordenadas.split(",")
     let latitud = parseFloat(arr[0]);//paso las cordenadas a float 
@@ -110,7 +109,7 @@ function eliminar() {
     map.eachLayer(function (layer) {
         if (layer instanceof L.Marker) {
             let marcador = layer;
-            let marcadorLatitud = marcador.getLatLng().lat;//getLatLng()recibe cordenadas en float y compara con otro numero float
+            let marcadorLatitud = marcador.getLatLng().lat;//getLatLng()recibe cordenadas en float y compara 
             let marcadorLongitud = marcador.getLatLng().lng;
 
             if (marcadorLatitud === latitud && marcadorLongitud === longitud) {
@@ -120,7 +119,6 @@ function eliminar() {
     });
 
     divId.remove()
-    console.log(divId)
 }
 
 
