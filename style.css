@@ -42,3 +42,32 @@ label, input, select{
     color: #fff;
 }
 
+.lista-marcadores{
+    margin-top: 10px;
+}
+
+.mis-marcadores {
+    text-align: center;
+    background-color: #007bff;
+    padding: 8px;
+    color: white;
+}
+
+.contenedor-m{
+    display: flex;
+    align-items: center;
+    border-bottom: solid 1px #ccc;
+}
+
+.contenedor-m > span{
+    font-size: 16px;
+}
+
+#moverMapa{
+    background-color: lightgreen;
+    font-size: 20px;
+    padding: 0.8px 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
